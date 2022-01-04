@@ -1,3 +1,9 @@
+/*
+Library from GitHub: eepj/FX29K_for_Arduino - 12 May 2021
+Null Constructor branch added: DarkYendor/FX29K_for_Arduino - 4 Jan 2022
+Licensed under the MIT License, refer to GitHub for details
+*/
+
 #include "FX29K.h"
 #include <Wire.h>
 
@@ -14,6 +20,12 @@
    @param range FX29 load range.
    @param i2cPtr TwoWire object pointer.
 */
+
+/**
+Null Constructor.  Construct instance without assigning variables.
+*/
+FX29K::FX29K() {}
+
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
   _i2cAddr = addr;
   _range = range;
@@ -29,6 +41,20 @@ FX29K::FX29K(uint8_t addr, uint8_t range) {
    @brief Destructor.
 */
 FX29K::~FX29K(void) {}
+
+/**
+Initialisers, if constructed without assigning variables.
+*/
+void FX29K::initFX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
+  _i2cAddr = addr;
+  _range = range;
+  _i2cPtr = i2cPtr;
+}
+
+void FX29K::initFX29K(uint8_t addr, uint8_t range) {
+  _i2cAddr = addr;
+  _range = range;
+}
 
 /**
    @brief Tare the scale with the average of 10 samples.
