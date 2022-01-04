@@ -1,3 +1,9 @@
+/*
+Library from GitHub: eepj/FX29K_for_Arduino - 12 May 2021
+Null Constructor branch added: DarkYendor/FX29K_for_Arduino - 4 Jan 2022
+Licensed under the MIT License, refer to GitHub for details
+*/
+
 #ifndef FX29K_H
 #define FX29K_H
 #include <Arduino.h>
@@ -18,10 +24,14 @@ class FX29K{
     TwoWire* _i2cPtr = &Wire;
   
   public:
+    FX29K();
     FX29K(uint8_t addr, uint8_t range);
     FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
     ~FX29K(void);
    
+    void initFX29K(uint8_t addr, uint8_t range);
+    void initFX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
+  
     uint16_t tare(void);
     uint16_t tare(uint16_t samples);
   
